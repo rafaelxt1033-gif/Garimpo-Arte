@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garimpo & Arte | Móveis Usados e Antiguidades</title>
+    
+    <!-- Fontes do Google (Estilo clássico e legível) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variáveis de Cores (Paleta Rústica e Elegante) */
+        :root {
+            --madeira-escura: #2C1E16;
+            --madeira-media: #5C4033;
+            --dourado-vintage: #D4AF37;
+            --bege-claro: #F5F5DC;
+            --branco: #FFFFFF;
+            --texto-escuro: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bege-claro);
+            color: var(--texto-escuro);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background-color: rgba(44, 30, 22, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--dourado-vintage);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            color: var(--dourado-vintage);
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .logo span { color: var(--branco); font-style: italic; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--dourado-vintage); }
+
+        /* SEÇÃO HERO (Imagem de Fundo Impactante) */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(44, 30, 22, 0.7), rgba(44, 30, 22, 0.8)), url('https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            color: var(--branco);
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero p span {
+            color: var(--dourado-vintage);
+            font-weight: bold;
+        }
+
+        .btn-gold {
+            background-color: var(--dourado-vintage);
+            color: var(--madeira-escura);
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+            border: 2px solid var(--dourado-vintage);
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--dourado-vintage);
+        }
+
+        /* CONEXÃO SÃO PAULO - PARAÍBA */
+        .sobre-regioes {
+            padding: 5rem 5%;
+            background-color: var(--branco);
+            text-align: center;
+        }
+        .sobre-regioes h2 {
+            font-size: 2.5rem;
+            color: var(--madeira-escura);
+            margin-bottom: 2rem;
+        }
+        .cards-regiao {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card-local {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bege-claro);
+            padding: 2rem;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--madeira-media);
+        }
+        .card-local i { font-size: 3rem; color: var(--dourado-vintage); margin-bottom: 1rem; }
+
+        /* GALERIA DE MÓVEIS (LONGA) */
+        .galeria {
+            padding: 5rem 5%;
+            background-color: var(--madeira-escura);
+            color: var(--branco);
+            text-align: center;
+        }
+        .galeria h2 {
+            font-size: 3rem;
+            color: var(--dourado-vintage);
+            margin-bottom: 1rem;
+        }
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .foto-movel {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.5s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        .foto-movel:hover {
+            transform: scale(1.03);
+            border-color: var(--dourado-vintage);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .foto-overlay {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 1rem;
+            transition: 0.3s;
+        }
+        .foto-movel:hover .foto-overlay { bottom: 0; }
+
+        /* ASSISTENTE IA */
+        .ia-section {
+            padding: 6rem 5%;
+            background: url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            position: relative;
+        }
+        .ia-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(245, 245, 220, 0.9); /* Bege transparente */
+        }
+        .ia-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--branco);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--dourado-vintage);
+        }
+        .ia-content h2 { color: var(--madeira-escura); font-size: 2.5rem; margin-bottom: 1rem; }
+        .ia-content p { margin-bottom: 2rem; color: #555; }
+        
+        .ia-input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-ia {
+            width: 100%;
+            background: var(--madeira-escura);
+            color: var(--dourado-vintage);
+            padding: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-ia:hover { background: var(--madeira-media); }
+        
+        #ia-loading { display: none; margin-top: 1.5rem; color: var(--madeira-media); font-weight: bold; }
+        #ia-resultado {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #F8F9FA;
+            border-left: 4px solid var(--dourado-vintage);
+            text-align: left;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--madeira-escura);
+            color: var(--branco);
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 5px solid var(--dourado-vintage);
+        }
+
+        /* Botão WhatsApp Flutuante */
+        .zap-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .zap-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="#" class="logo">Garimpo <span>& Arte</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#acervo">Nosso Acervo</a></li>
+                <li><a href="#ia">Assistente de Busca</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <h1>Móveis Usados com Alma e História</h1>
+        <p>A maior seleção de móveis rústicos, vintage e antiguidades. O melhor do garimpo de <span>São Paulo</span>, com o charme e a logística de entrega para toda a <span>Paraíba</span> e região.</p>
+        <a href="#acervo" class="btn-gold"><i class="fa-solid fa-couch"></i> Explorar o Acervo</a>
+    </section>
+
+    <!-- SOBRE AS REGIÕES -->
+    <section class="sobre-regioes">
+        <h2>Conectando Culturas Através do Design</h2>
+        <div class="cards-regiao">
+            <div class="card-local">
+                <i class="fa-solid fa-city"></i>
+                <h3>O Polo de São Paulo</h3>
+                <p>Nossos caçadores de relíquias garimpam os melhores móveis usados, de madeira maciça e design clássico nas melhores regiões de SP, garantindo preço justo e peças exclusivas que duram gerações.</p>
+            </div>
+            <div class="card-local">
+                <i class="fa-solid fa-sun"></i>
+                <h3>O Charme da Paraíba</h3>
+                <p>Sabemos que o nordestino, especialmente o paraibano, valoriza o aconchego do lar e a mobília durável. Temos logística parceira para enviar nossas peças paulistas direto para o coração da Paraíba.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE MÓVEIS -->
+    <section id="acervo" class="galeria">
+        <h2>Obras do Nosso Acervo</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Peças únicas restauradas e conservadas. Clique para negociar.</p>
+        
+        <div class="galeria-grid">
+            <!-- Móvel 1 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Poltrona Clássica Couro</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-001</p>
+                </div>
+            </div>
+            <!-- Móvel 2 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Cômoda Rústica Madeira Maciça</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-002</p>
+                </div>
+            </div>
+            <!-- Móvel 3 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Aparador Vintage anos 70</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-003</p>
+                </div>
+            </div>
+            <!-- Móvel 4 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Mesa de Jantar Colonial</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-004</p>
+                </div>
+            </div>
+            <!-- Móvel 5 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1581539250439-c966898956d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Cadeira de Balanço Artesanal</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-005</p>
+                </div>
+            </div>
+            <!-- Móvel 6 -->
+            <div class="foto-movel" style="background-image: url('https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                <div class="foto-overlay">
+                    <h4>Cristaleira Antiga Vidro Bisote</h4>
+                    <p style="font-size: 0.9rem; color: var(--dourado-vintage);">Ref: G-006</p>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-gold" style="display: inline-block; margin-top: 2rem;">Ver Mais Catálogo no WhatsApp</a>
+    </section>
+
+    <!-- ASSISTENTE DE IA -->
+    <section id="ia" class="ia-section">
+        <div class="ia-overlay"></div>
+        <div class="ia-content">
+            <h2>Garimpo IA <i class="fa-solid fa-robot" style="color: var(--dourado-vintage);"></i></h2>
+            <p>Temos centenas de móveis no nosso galpão que não estão no site. Digite o que você procura e nossa Inteligência Artificial vai vasculhar nosso inventário de SP e PB.</p>
+            
+            <input type="text" id="buscaMovel" class="ia-input" placeholder="Ex: Cadeira de balanço de madeira escura">
+            <button class="btn-ia" onclick="procurarMovelIA()">Procurar no Acervo Mágico</button>
+
+            <div id="ia-loading">
+                <i class="fa-solid fa-spinner fa-spin"></i> A IA está vasculhando os galpões de SP e consultando frete para PB...
+            </div>
+
+            <div id="ia-resultado">
+                <h4 style="color: var(--madeira-escura); margin-bottom: 0.5rem;"><i class="fa-solid fa-check-circle" style="color: green;"></i> Análise Concluída!</h4>
+                <p id="resposta-ia" style="font-size: 1.05rem;"></p>
+                <a href="https://wa.me/5511999999999" target="_blank" style="display: inline-block; margin-top: 15px; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                    <i class="fa-brands fa-whatsapp"></i> Receber Fotos no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 style="font-family: 'Playfair Display', serif; color: var(--dourado-vintage); margin-bottom: 1rem;">Garimpo & Arte</h2>
+        <p>Móveis com Alma. Conectando São Paulo ao Nordeste.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">&copy; 2026 Todos os direitos reservados. Design desenvolvido para alta conversão.</p>
+    </footer>
+
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5511999999999" class="zap-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- LÓGICA DO ASSISTENTE IA -->
+    <script>
+        function procurarMovelIA() {
+            const termo = document.getElementById('buscaMovel').value;
+
+            if(!termo) {
+                alert("Por favor, digite o móvel que você está procurando!");
+                return;
+            }
+
+            // Oculta resultado anterior e mostra "carregando"
+            document.getElementById('ia-resultado').style.display = 'none';
+            document.getElementById('ia-loading').style.display = 'block';
+
+            // Simula o tempo de pensamento da IA
+            setTimeout(() => {
+                document.getElementById('ia-loading').style.display = 'none';
+                
+                // Resposta gerada de forma dinâmica
+                document.getElementById('resposta-ia').innerHTML = `Incrível! Nossa IA cruzou os dados e encontrou <strong>3 opções fantásticas parecidas com "${termo}"</strong> no nosso acervo fechado em São Paulo. <br><br>A boa notícia: temos rotas de transportadora parceiras essa semana para a <strong>Paraíba</strong> com frete super acessível. Clique abaixo para enviarmos as fotos exclusivas dessas peças para o seu WhatsApp!`;
+
+                document.getElementById('ia-resultado').style.display = 'block';
+            }, 2000); // Demora 2 segundos para dar mais realismo à busca da IA
+        }
+    </script>
+</body>
+</html>
